@@ -20,8 +20,10 @@ public class Survey {
         List<Participant> participantList = new ArrayList<>();
 
         do {
+
             System.out.println(SurveyQuestions.askToJoin);
             String answer = input.nextLine();
+
             if (answer.equalsIgnoreCase("Y") ||
                     answer.equalsIgnoreCase("yes")) {
 
@@ -40,16 +42,14 @@ public class Survey {
 
                 participantList.add(participant);
 
-                  if (participant.gender == 'M') Participant.addMaleParticipants();
-                  else if (participant.gender == 'F') Participant.addFemaleParticipants();
-                  else System.out.println("Invalid input");
+                if (participant.gender == 'M') Participant.addMaleParticipants();
+                else if (participant.gender == 'F') Participant.addFemaleParticipants();
+                else System.out.println("Invalid input");
 
                 Participant.addParticipants();
-
-            } else if (answer.equalsIgnoreCase("N") ||
-                    answer.equalsIgnoreCase("no")) continue;
+            }
         }
-            while(Participant.totalNumberOfParticipants < 3);
+        while (Participant.totalNumberOfParticipants < 3);
 
 
 //        for (int i = 0; i < 3; i++) {
@@ -67,7 +67,7 @@ public class Survey {
 //                participant.age = input.nextInt();
 //
 //                System.out.println(SurveyQuestions.askGender);
-//                participant.gender = input.next();
+//                participant.gender = input.next().toUpperCase().charAt(0);
 //                input.nextLine();
 //
 //                participantList.add(participant);
@@ -75,7 +75,7 @@ public class Survey {
 //                  if(participant.gender == 'M') Participant.addMaleParticipants();
 //                  else if(participant.gender == 'F') Participant.addFemaleParticipants();
 //                  else System.out.println("Invalid input");
-
+//
 //                Participant.addParticipants();
 //            }
 //            else if(answer.equalsIgnoreCase("N") ||
