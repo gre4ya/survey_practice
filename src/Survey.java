@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Survey {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         /**
          COMPLETE THIS CLASS AFTER ALL OTHER CLASSES ARE COMPLETED
          */
@@ -17,39 +16,75 @@ public class Survey {
         -Print the age of the youngest person
         -Print the age of the eldest person
          */
-
-//        Participant participant1 = new Participant();
-//        Participant participant2 = new Participant();
-//        Participant participant3 = new Participant();
-
+        Scanner input = new Scanner(System.in);
         List<Participant> participantList = new ArrayList<>();
-//        participantList.add(participant1);
-//        participantList.add(participant2);
-//        participantList.add(participant3);
-        //participantList.size();
-        for (int i = 1; i <= 3; i++) {
+
+        do {
             System.out.println(SurveyQuestions.askToJoin);
             String answer = input.nextLine();
-            if(answer.equalsIgnoreCase("Y")){
+            if (answer.equalsIgnoreCase("Y") ||
+                    answer.equalsIgnoreCase("yes")) {
+
                 Participant participant = new Participant();
+
                 System.out.println(SurveyQuestions.askName);
                 participant.name = input.nextLine();
+
                 System.out.println(SurveyQuestions.askAge);
-                participant.age = input.nextByte();
-                System.out.println(SurveyQuestions.askGender);
-                participant.gender = input.next();
+                participant.age = input.nextInt();
                 input.nextLine();
+
+                System.out.println(SurveyQuestions.askGender);
+                participant.gender = input.next().toUpperCase().charAt(0);
+                input.nextLine();
+
                 participantList.add(participant);
-                if(participant.gender.equalsIgnoreCase("M")) Participant.addMaleParticipants();
-                else if(participant.gender.equalsIgnoreCase("F")) Participant.addFemaleParticipants();
-                else System.out.println("Invalid input");
+
+                  if (participant.gender == 'M') Participant.addMaleParticipants();
+                  else if (participant.gender == 'F') Participant.addFemaleParticipants();
+                  else System.out.println("Invalid input");
+
                 Participant.addParticipants();
-            }
-            else if(answer.equalsIgnoreCase("N")) i--;
+
+            } else if (answer.equalsIgnoreCase("N") ||
+                    answer.equalsIgnoreCase("no")) continue;
         }
+            while(Participant.totalNumberOfParticipants < 3);
+
+
+//        for (int i = 0; i < 3; i++) {
+//            System.out.println(SurveyQuestions.askToJoin);
+//            String answer = input.nextLine();
+//              if(answer.equalsIgnoreCase("Y") ||
+//                      answer.equalsIgnoreCase("yes")){
+//
+//                Participant participant = new Participant();
+//
+//                System.out.println(SurveyQuestions.askName);
+//                participant.name = input.nextLine();
+//
+//                System.out.println(SurveyQuestions.askAge);
+//                participant.age = input.nextInt();
+//
+//                System.out.println(SurveyQuestions.askGender);
+//                participant.gender = input.next();
+//                input.nextLine();
+//
+//                participantList.add(participant);
+//
+//                  if(participant.gender == 'M') Participant.addMaleParticipants();
+//                  else if(participant.gender == 'F') Participant.addFemaleParticipants();
+//                  else System.out.println("Invalid input");
+
+//                Participant.addParticipants();
+//            }
+//            else if(answer.equalsIgnoreCase("N") ||
+//                      answer.equalsIgnoreCase("no")) i--;
+//        }
+
         participantList.forEach(System.out::println);
         System.out.println("The total number of male participants is = " +
-                Participant.totalNumberOfParticipants);
+                Participant.totalNumberOfMaleParticipants);
         System.out.println("The total number of female participants is = " +
                 Participant.totalNumberOfFemaleParticipants);
         System.out.println("The age of the youngest person is = " +

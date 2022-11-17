@@ -1,7 +1,7 @@
 public class Participant {
 
     public Participant(){};
-    public Participant(String name, int age, String gender){
+    public Participant(String name, int age, char gender){
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -13,7 +13,7 @@ public class Participant {
     total number of male participants -> variable name can be totalNumberOfMaleParticipants
     total number of female participants -> variable name can be totalNumberOfFemaleParticipants
      */
-    public static int totalNumberOfParticipants;
+    public static int totalNumberOfParticipants = 0;
     public static int totalNumberOfMaleParticipants;
     public static int totalNumberOfFemaleParticipants;
 
@@ -25,7 +25,7 @@ public class Participant {
      */
     public String name;
     public int age;
-    public String gender;
+    public char gender;
 
 
     //Create a static void method addParticipants() that will increase totalNumberOfParticipants by 1
